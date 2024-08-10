@@ -5,6 +5,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        <title>TFD - Squishies</title>
         <ColorSchemeScript defaultColorScheme="auto" />
       </Head>
       <body>

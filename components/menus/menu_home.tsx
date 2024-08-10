@@ -1,10 +1,21 @@
-import { Card, Container, Grid, Group, px, SimpleGrid, Skeleton, Stack, Text, useMantineTheme } from "@mantine/core";
+import { Card, Grid, px, SimpleGrid, Stack, Text, useMantineTheme  } from "@mantine/core";
+import { notifications } from '@mantine/notifications';
 import classes from './menu_home.module.css';
 
 const BASE_HEIGHT = 400;
 const getNewHeight = (children: number, spacing: number) => BASE_HEIGHT / children - spacing * ((children - 1) / children);
 const carImage = (alto: number, link:string, imagen:string, titulo:string) => (
-    <Card p="lg" shadow="lg" className={classes.card} radius="md" component="a" href={link} target="_blank" h={alto}>
+    <Card h={alto} p="lg" shadow="lg" className={classes.card} radius="md" component="a" href={link} 
+        onClick={() =>
+            link=='#'?
+            notifications.show({
+                color: 'red',
+                title: 'Error!',
+                message: 'Pagina no disponible',
+                
+            }):''
+        }
+    >
         <div className={classes.image} style={{backgroundImage:'url('+imagen+')',}} />
         <div className={classes.overlay} />
         <div className={classes.content}><div><Text size="lg" className={classes.title} fw={500}>{titulo}</Text></div></div>
